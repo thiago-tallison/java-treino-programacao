@@ -33,6 +33,10 @@ public class CaminhoArquivo {
         return new CaminhoArquivo(Paths.get(directory), Paths.get(file));
     }
 
+    public static CaminhoArquivo getInstance() {
+        return new CaminhoArquivo(Paths.get(""), Paths.get(""));
+    }
+
     private static Integer getDirectoryNumber(Double id) {
         return (int) Math.ceil(id / 1000);
     }
