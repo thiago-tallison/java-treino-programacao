@@ -9,6 +9,11 @@ public class Conta {
 		this.cpf = cpf;
 	}
 
+	public Conta(String cpf, Double saldo) {
+		this.cpf = cpf;
+		this.saldo = saldo;
+	}
+
 	public double getSaldo() {
 		return saldo;
 	}
