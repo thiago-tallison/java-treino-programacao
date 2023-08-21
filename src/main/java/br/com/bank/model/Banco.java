@@ -8,9 +8,16 @@ import java.util.stream.Collectors;
 
 public class Banco {
     private String nome;
+    private Long numeroRegistro;
 
     public Banco(String nome) {
         this.nome = nome;
+        this.numeroRegistro = (long) (Math.random() * 1000.0);
+    }
+
+    public Banco(String nome, Long numeroRegistro) {
+        this.nome = nome;
+        this.numeroRegistro = numeroRegistro;
     }
 
     private List<Conta> contas = new ArrayList<>();
@@ -36,6 +43,10 @@ public class Banco {
 
     private List<Conta> filtrarContas(Predicate<Conta> filtro) {
         return contas.stream().filter(filtro).collect(Collectors.toList());
+    }
+
+    public Long getNumeroRegistro() {
+        return numeroRegistro;
     }
 
 }
