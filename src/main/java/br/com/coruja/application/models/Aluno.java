@@ -13,8 +13,11 @@ public class Aluno {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
+
   @Column(nullable = false)
   private String name;
+
+  @Column(unique = true)
   private String email;
 
   public Aluno() {

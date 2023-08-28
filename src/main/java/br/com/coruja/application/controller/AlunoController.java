@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.coruja.application.errors.EmailJaCadastradoException;
 import br.com.coruja.application.models.Aluno;
 import br.com.coruja.application.repositories.AlunoRepository;
 
@@ -38,6 +39,12 @@ public class AlunoController {
 
     if (data == null) {
       throw new IllegalArgumentException();
+    }
+
+    Optional<Aluno> alreadyExists = this.alunoRepository.findByEmail(data.getEmail());
+
+    if (alreadyExists.isPresent()) {
+      throw new EmailJaCadastradoException();
     }
 
     Aluno savedAluno = this.alunoRepository.save(data);
